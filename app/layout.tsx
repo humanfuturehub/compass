@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { League_Spartan, Public_Sans } from 'next/font/google';
+import { getLearner } from '@/lib/session/resolve';
 import './globals.css';
 
 const heading = League_Spartan({
@@ -22,9 +23,15 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // lang follows the learner's locale (SPEC 11). A broken session must not take
+  // down public routes, so failures fall back to the source locale here only.
+  const locale = await getLearner()
+    .then((learner) => learner?.locale ?? 'de')
+    .catch(() => 'de');
+
   return (
-    <html lang="de" className={`${heading.variable} ${body.variable}`}>
+    <html lang={locale} className={`${heading.variable} ${body.variable}`}>
       <body>{children}</body>
     </html>
   );
