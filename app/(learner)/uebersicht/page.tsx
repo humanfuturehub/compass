@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { LearnerPage } from '@/components/layout/LearnerPage';
 import { Button } from '@/components/Button';
 import { ModuleCard } from '@/components/ModuleCard';
@@ -59,11 +58,11 @@ export default async function OverviewPage() {
           </li>
         ))}
       </ol>
-      <p className="mt-32 text-small">
-        <Link href="/fortsetzen" className="text-hfh-blue underline">
+      <div className="mt-32">
+        <Button href="/fortsetzen" variant="quiet">
           {t('resume.show', locale)}
-        </Link>
-      </p>
+        </Button>
+      </div>
     </LearnerPage>
   );
 }

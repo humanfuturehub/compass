@@ -112,6 +112,12 @@ specification; this file records where the build interprets or deviates from it.
   `beforeAll`, so no database reset is needed and seeded demo data stays intact. CI passes
   `E2E_SUPABASE_URL`, `E2E_SUPABASE_SERVICE_ROLE_KEY` (preview) and
   `VERCEL_AUTOMATION_BYPASS_SECRET` (Deployment Protection bypass header).
+- **"Cookies blocked" is asserted, not emulated.** Buffering document responses through
+  Playwright's route interception breaks Next's streamed hydration, so the quiz test
+  instead neuters `document.cookie`, asserts the server never sends `Set-Cookie` during the
+  quiz, and checks the context ends with zero cookies while the run is recorded.
+- **The smoke test takes ~3 minutes against `next dev`** because every route compiles on
+  first hit. Against a built preview deployment it is much faster.
 - **`scripts/check-tokens.mjs`** greps `app/`, `components/`, `lib/` for hex or px literals
   outside `app/globals.css` and `tailwind.config.ts`. Local tool, not a CI gate (SPEC 12.6).
 
@@ -155,11 +161,21 @@ join assessments post on post.learner_id = l.id and post.phase = 'post';
 | 5 Checks | done | yes | Wrong answer explains and never blocks, retry writes attempt_no = 2, no score text |
 | 6 Assessment, certificate | done | yes | Fresh learner walked all six steps; pre 4 → post 12 stored; certificate prints to one A4 page; certificates are private to their learner |
 | 7 Admin | done | yes | Seeded learner row (m1, 7/20, 0,22 h), CSV with BOM and `;`, `m1-check-q1` flagged at 0 % |
-| 8 Quiz, smoke test | not started | | |
+| 8 Quiz, smoke test | done | yes | `npm run test:e2e` passes headless against local dev; quiz asserted cookie-free |
 
 ## Supabase projects
 
 | Project | Region | State |
 |---|---|---|
-| `compass-preview` | EU Central | not yet created |
-| `compass-prod` | EU Central | not yet created |
+| `compass-preview` | EU Central | created, ref `zuomlxfjmessbyolgiul`, linked locally, reset from the repo on 2026-09-20. Local dev and Vercel Preview both use it. |
+| `compass-prod` | EU Central | not yet created. Never link or reset it from a development machine. |
+
+## Production readiness (SPEC 12.8)
+
+- [x] `/dev/*` returns 404 when `VERCEL_ENV=production`
+- [x] `noindex` on every page (remove at launch only)
+- [ ] GitHub `humanfuturehub/compass` with `main` protected; CI green on a PR
+- [ ] Vercel team project, `fra1`, Deployment Protection on, env vars per environment
+- [ ] `compass-prod` created in EU Central and its migrations pushed (`supabase db push` against prod, once, deliberately)
+- [ ] Custom domain with HTTPS
+- [ ] Editorial review of `content/de` (see Content TODOs)

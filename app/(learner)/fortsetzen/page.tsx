@@ -1,5 +1,4 @@
 import { headers } from 'next/headers';
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Button } from '@/components/Button';
 import { LearnerPage } from '@/components/layout/LearnerPage';
@@ -68,11 +67,11 @@ export default async function FortsetzenPage({ searchParams }: { searchParams: S
       <div className="mt-24">
         <Button href="/kurs">{t('resume.start', learner.locale)}</Button>
       </div>
-      <p className="mt-16 text-small text-ink-muted">
-        <Link href="/uebersicht" className="text-hfh-blue underline">
+      <div className="mt-12">
+        <Button href="/uebersicht" variant="quiet">
           {t('overview.title', learner.locale)}
-        </Link>
-      </p>
+        </Button>
+      </div>
     </LearnerPage>
   );
 }

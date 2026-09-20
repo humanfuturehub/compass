@@ -7,3 +7,4 @@ export * from './checks';
 export * from './assessments';
 export * from './certificates';
 export * from './admin';
+export * from './quiz';
