@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { LearnerPage } from '@/components/layout/LearnerPage';
+import { Button } from '@/components/Button';
 import { ModuleCard } from '@/components/ModuleCard';
 import { Wordmark } from '@/components/Wordmark';
 import { isUnitComplete, stepStates } from '@/lib/content/path';
 import type { Step } from '@/lib/content/types';
 import type { ProgressMap } from '@/lib/content/path';
+import { getCertificateForLearner } from '@/lib/db/certificates';
 import { getLearnerContext } from '@/lib/learner/context';
 import { t } from '@/lib/strings/t';
 
@@ -17,11 +19,17 @@ function stepHref(step: Step, progress: ProgressMap): string {
 export default async function OverviewPage() {
   const { learner, course, progress } = await getLearnerContext();
   const locale = learner.locale;
+  const certificate = await getCertificateForLearner(learner.id);
 
   return (
     <LearnerPage>
       <Wordmark locale={locale} />
       <h1 className="mt-24 text-ink">{t('overview.title', locale)}</h1>
+      {certificate ? (
+        <div className="mt-16">
+          <Button href={`/zertifikat/${certificate.id}`}>{t('certificate.show', locale)}</Button>
+        </div>
+      ) : null}
       <ol className="mt-24 space-y-16">
         {stepStates(course, progress).map(({ step, state, previous }) => (
           <li key={step.id}>

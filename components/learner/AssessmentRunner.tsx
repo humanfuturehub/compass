@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/Button';
 import { RadioOption } from '@/components/RadioOption';
 import { ResultMark } from '@/components/ResultMark';
@@ -27,6 +28,7 @@ export function AssessmentRunner({ questions, phase, locale, stored, onComplete 
   const [submitted, setSubmitted] = useState<AssessmentAnswer[] | null>(stored ?? null);
   const [pending, setPending] = useState(false);
   const groupName = useId();
+  const router = useRouter();
 
   if (submitted) {
     return <Review questions={questions} phase={phase} answers={submitted} locale={locale} />;
@@ -51,6 +53,8 @@ export function AssessmentRunner({ questions, phase, locale, stored, onComplete 
     } finally {
       setPending(false);
       setSubmitted(answers);
+      // The server now holds the answers; re-render so the footer's Weiter appears.
+      router.refresh();
     }
   }
 

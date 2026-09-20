@@ -74,8 +74,11 @@ export const en = {
   'certificate.completedOn': 'completed on',
   'certificate.modules': 'Modules covered',
   'certificate.hours': 'Duration: about {hours} hours',
+  'certificate.hours.one': 'Duration: about 1 hour',
   'certificate.print': 'Print or save',
   'certificate.backToCourse': 'Back to the course',
+  'certificate.show': 'Show certificate',
+  'course.title': 'Compass: Understanding AI and using it safely',
 
   'quiz.title': 'How well do you know AI?',
   'quiz.intro': 'Seven short questions. No sign-up, and nothing that identifies you is stored.',

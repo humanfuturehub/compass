@@ -105,6 +105,18 @@ specification; this file records where the build interprets or deviates from it.
 - **`scripts/check-tokens.mjs`** greps `app/`, `components/`, `lib/` for hex or px literals
   outside `app/globals.css` and `tailwind.config.ts`. Local tool, not a CI gate (SPEC 12.6).
 
+## Useful SQL
+
+Pre/post delta per learner (Phase 6 acceptance):
+
+```sql
+select l.id, s.staff_ref, pre.score as pre, post.score as post, post.score - pre.score as delta
+from learners l
+join seats s on s.id = l.seat_id
+join assessments pre  on pre.learner_id  = l.id and pre.phase  = 'pre'
+join assessments post on post.learner_id = l.id and post.phase = 'post';
+```
+
 ## Content TODOs
 
 - **Editorial review** of all German content by Human Future Hub. Everything in
@@ -131,7 +143,7 @@ specification; this file records where the build interprets or deviates from it.
 | 3 Access | done | yes | Redeem, 180-day httpOnly cookie across a fresh context, resume link in a cookie-less context, used/unknown/garbage refused |
 | 4 Path | done | yes | Dots advance, reopen lands on the exact unit, four kinds of deep-link redirect, beacon writes on tab hide, 3× cap (288 s) |
 | 5 Checks | done | yes | Wrong answer explains and never blocks, retry writes attempt_no = 2, no score text |
-| 6 Assessment, certificate | not started | | |
+| 6 Assessment, certificate | done | yes | Fresh learner walked all six steps; pre 4 → post 12 stored; certificate prints to one A4 page; certificates are private to their learner |
 | 7 Admin | not started | | |
 | 8 Quiz, smoke test | not started | | |
 

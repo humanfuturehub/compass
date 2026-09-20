@@ -73,8 +73,11 @@ export const de = {
   'certificate.completedOn': 'abgeschlossen am',
   'certificate.modules': 'Behandelte Module',
   'certificate.hours': 'Umfang: ca. {hours} Stunden',
+  'certificate.hours.one': 'Umfang: ca. 1 Stunde',
   'certificate.print': 'Drucken oder speichern',
   'certificate.backToCourse': 'Zurück zum Kurs',
+  'certificate.show': 'Bescheinigung anzeigen',
+  'course.title': 'Compass: KI verstehen und sicher nutzen',
 
   'quiz.title': 'Wie gut kennst du KI?',
   'quiz.intro': 'Sieben kurze Fragen. Keine Anmeldung, kein Ergebnis wird gespeichert, das dich erkennt.',
