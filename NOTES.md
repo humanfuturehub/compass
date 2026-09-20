@@ -177,7 +177,8 @@ join assessments post on post.learner_id = l.id and post.phase = 'post';
 - [x] GitHub `humanfuturehub/compass` exists, private, `main` pushed
 - [ ] `main` protection: needs GitHub Team (the org is on Free; branch protection and
       rulesets are unavailable on private Free repos). Until then, merge only via PR by convention.
-- [ ] CI green on a PR (the `e2e` job waits for a Vercel preview deployment)
+- [~] CI on PR #1: `build` green on GitHub's runner; `e2e` polls the Deployments API
+      correctly and times out after 12 min until the Vercel GitHub integration deploys previews
 - [ ] Vercel team project, `fra1`, Deployment Protection on, env vars per environment
 - [ ] `compass-prod` created in EU Central and its migrations pushed (`supabase db push` against prod, once, deliberately)
 - [ ] Custom domain with HTTPS
