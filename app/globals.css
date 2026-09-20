@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens — SPEC.md 3.1. The single source of truth for colour, radius and
+   elevation. Components never use literal values; they use the Tailwind classes
+   generated from these variables. */
+:root {
+  /* Brand */
+  --hfh-blue: #1B4A9B;
+  --hfh-orange: #FF6D4D;
+  --hfh-teal: #52CBBE;
+
+  /* Derived tints — used as backgrounds behind dark text */
+  --hfh-blue-tint: #EAF0FA;
+  --hfh-orange-tint: #FFE9E3;
+  --hfh-teal-tint: #E4F7F5;
+
+  /* Neutrals */
+  --ink: #14161A;
+  --ink-muted: #5A6270;
+  --surface: #FFFFFF;
+  --surface-sunken: #F4F5F7;
+  --border: #E3E6EA;
+
+  /* Radius */
+  --r-card: 14px;
+  --r-btn: 10px;
+  --r-pill: 999px;
+
+  /* Elevation — one level only */
+  --shadow: 0 1px 2px rgba(20, 22, 26, 0.06);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface font-body text-body text-ink;
+  }
+
+  h1 {
+    @apply font-heading text-h1;
+  }
+
+  h2 {
+    @apply font-heading text-h2;
+  }
+
+  /* Visible focus for every interactive element: 2px blue ring at 2px offset. */
+  :focus-visible {
+    outline: 2px solid var(--hfh-blue);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Certificate and Merkblatt print view. Everything not marked print-only is chrome. */
+@page {
+  size: A4 portrait;
+  margin: 18mm;
+}
+
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+}

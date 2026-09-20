@@ -1,0 +1,110 @@
+// Interface strings, English. Must define every key of `de`; a missing key fails typecheck.
+
+import type { de } from './de';
+
+export const en = {
+  'app.title': 'Compass',
+  'app.brand': 'Human Future Hub',
+
+  'step.indicator': 'Module {n} of {total}',
+  'units.position': 'Unit {n} of {total}',
+  'units.allDone': 'All {total} units completed',
+
+  'header.back': 'Back to overview',
+  'header.remaining': 'about {n} min left',
+
+  'module.duration': 'about {n} min',
+  'module.state.done': 'Completed',
+  'module.state.current': 'Continue here',
+  'module.state.todo': 'Not started',
+  'module.locked': 'Complete {title} first',
+  'module.extra': 'Go deeper',
+  'module.extra.optional': 'Optional',
+
+  'transcript.label': 'Recorded example',
+  'transcript.user': 'Question',
+  'transcript.assistant': 'AI answer',
+
+  'check.group': 'Answer options',
+  'check.correct': 'Correct',
+  'check.incorrect': 'Not quite',
+  'check.retry': 'Try again',
+
+  'scenario.prompt': 'What would you do?',
+  'scenario.disagree': 'Reasonable people disagree here. Each of the three has something going for it.',
+
+  'merkblatt.print': 'Print or save',
+
+  'footer.next': 'Next',
+  'footer.stop': 'You can stop here. We remember where you are.',
+
+  'access.title': 'Your access code',
+  'access.help': 'You received the code from your institution. It has 8 characters.',
+  'access.placeholder': 'e.g. AB3DE7FG',
+  'access.submit': 'Start the course',
+  'access.error.format': 'The code has 8 letters or digits. Please check it again.',
+  'access.error.unknown': "We don't recognise this code. Please check it or ask your institution.",
+  'access.error.used': 'This code has already been used. Please ask your institution for a new one.',
+
+  'resume.title': 'Your link to continue',
+  'resume.help': 'This link brings you back to your place on any device. Send it to yourself on WhatsApp, for example.',
+  'resume.copy': 'Copy link',
+  'resume.copied': 'Copied',
+  'resume.start': "Let's go",
+  'resume.continue': 'Continue the course',
+  'resume.invalid': 'This link is no longer valid. Please enter your access code.',
+  'resume.show': 'Show access link',
+
+  'overview.title': 'Your course',
+  'overview.extras': 'Go deeper',
+
+  'assessment.progress': 'Question {n} of {total}',
+  'assessment.next': 'Next',
+  'assessment.finish': 'Finish',
+  'assessment.done.pre': "Thank you. Your answers are saved. At the end of the course you'll see what has changed.",
+  'assessment.done.post': 'Thank you. Here is the explanation for every question.',
+
+  'certificate.form.title': 'Your name on the certificate',
+  'certificate.form.help': 'This is how your name will appear on the certificate of participation.',
+  'certificate.form.label': 'Name',
+  'certificate.form.submit': 'Create certificate',
+  'certificate.heading': 'Certificate of Participation',
+  'certificate.intro': 'has completed the course',
+  'certificate.completedOn': 'completed on',
+  'certificate.modules': 'Modules covered',
+  'certificate.hours': 'Duration: about {hours} hours',
+  'certificate.print': 'Print or save',
+  'certificate.backToCourse': 'Back to the course',
+
+  'quiz.title': 'How well do you know AI?',
+  'quiz.intro': 'Seven short questions. No sign-up, and nothing that identifies you is stored.',
+  'quiz.start': 'Start the quiz',
+  'quiz.result.title': 'Your result',
+  'quiz.result.score': '{score} of {total} correct',
+  'quiz.cta': 'Enter the course with an access code',
+
+  'admin.title': 'Compass Admin',
+  'admin.code.label': 'Access code',
+  'admin.code.submit': 'Sign in',
+  'admin.code.error': 'Unknown access code.',
+  'admin.stat.issued': 'Seats issued',
+  'admin.stat.activated': 'Activated',
+  'admin.stat.completed': 'Completed',
+  'admin.stat.certificates': 'Certificates',
+  'admin.table.staffRef': 'Reference',
+  'admin.table.step': 'Current module',
+  'admin.table.units': 'Units',
+  'admin.table.hours': 'Hours',
+  'admin.table.lastActive': 'Last active',
+  'admin.table.completed': 'Completed on',
+  'admin.export': 'Export CSV',
+  'admin.items.title': 'Item analysis',
+  'admin.items.question': 'Question',
+  'admin.items.attempts': 'First attempts',
+  'admin.items.correct': 'Correct (1st attempt)',
+  'admin.items.flag': 'below 55 %',
+  'admin.logout': 'Sign out',
+
+  'notFound.title': 'This page does not exist.',
+  'notFound.back': 'To the start page',
+} as const satisfies Record<keyof typeof de, string>;

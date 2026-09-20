@@ -1,0 +1,109 @@
+// Interface strings, German (source locale). Learner-facing content lives in /content.
+// Placeholders use {name} and are filled by t().
+
+export const de = {
+  'app.title': 'Compass',
+  'app.brand': 'Human Future Hub',
+
+  'step.indicator': 'Modul {n} von {total}',
+  'units.position': 'Einheit {n} von {total}',
+  'units.allDone': 'Alle {total} Einheiten abgeschlossen',
+
+  'header.back': 'Zurück zur Übersicht',
+  'header.remaining': 'noch ca. {n} Min.',
+
+  'module.duration': 'ca. {n} Min.',
+  'module.state.done': 'Abgeschlossen',
+  'module.state.current': 'Hier weitermachen',
+  'module.state.todo': 'Noch offen',
+  'module.locked': 'Zuerst {title} abschließen',
+  'module.extra': 'Mehr dazu',
+  'module.extra.optional': 'Freiwillig',
+
+  'transcript.label': 'Aufgezeichnetes Beispiel',
+  'transcript.user': 'Frage',
+  'transcript.assistant': 'Antwort der KI',
+
+  'check.group': 'Antwortmöglichkeiten',
+  'check.correct': 'Richtig',
+  'check.incorrect': 'Nicht ganz',
+  'check.retry': 'Nochmal versuchen',
+
+  'scenario.prompt': 'Was würdest du tun?',
+  'scenario.disagree': 'Hier sind sich auch vernünftige Menschen nicht einig. Alle drei Wege haben etwas für sich.',
+
+  'merkblatt.print': 'Drucken oder speichern',
+
+  'footer.next': 'Weiter',
+  'footer.stop': 'Du kannst hier aufhören. Wir merken uns deinen Platz.',
+
+  'access.title': 'Dein Zugangscode',
+  'access.help': 'Du hast den Code von deiner Einrichtung bekommen. Er hat 8 Zeichen.',
+  'access.placeholder': 'z. B. AB3DE7FG',
+  'access.submit': 'Kurs starten',
+  'access.error.format': 'Der Code hat 8 Buchstaben oder Zahlen. Bitte prüfe ihn noch einmal.',
+  'access.error.unknown': 'Diesen Code kennen wir nicht. Bitte prüfe ihn oder frag deine Einrichtung.',
+  'access.error.used': 'Dieser Code wurde schon benutzt. Bitte frag deine Einrichtung nach einem neuen Code.',
+
+  'resume.title': 'Dein Link zum Fortsetzen',
+  'resume.help': 'Mit diesem Link kommst du auf jedem Gerät zurück an deinen Platz. Schick ihn dir zum Beispiel selbst auf WhatsApp.',
+  'resume.copy': 'Link kopieren',
+  'resume.copied': 'Kopiert',
+  'resume.start': "Los geht's",
+  'resume.continue': 'Weiter im Kurs',
+  'resume.invalid': 'Dieser Link ist nicht mehr gültig. Bitte gib deinen Zugangscode ein.',
+  'resume.show': 'Zugangslink anzeigen',
+
+  'overview.title': 'Dein Kurs',
+  'overview.extras': 'Mehr dazu',
+
+  'assessment.progress': 'Frage {n} von {total}',
+  'assessment.next': 'Weiter',
+  'assessment.finish': 'Abschließen',
+  'assessment.done.pre': 'Danke. Deine Antworten sind gespeichert. Am Ende des Kurses siehst du, was sich verändert hat.',
+  'assessment.done.post': 'Danke. Hier siehst du zu jeder Frage die Erklärung.',
+
+  'certificate.form.title': 'Dein Name auf der Bescheinigung',
+  'certificate.form.help': 'So wird dein Name auf der Teilnahmebescheinigung stehen.',
+  'certificate.form.label': 'Name',
+  'certificate.form.submit': 'Bescheinigung erstellen',
+  'certificate.heading': 'Teilnahmebescheinigung',
+  'certificate.intro': 'hat den Kurs',
+  'certificate.completedOn': 'abgeschlossen am',
+  'certificate.modules': 'Behandelte Module',
+  'certificate.hours': 'Umfang: ca. {hours} Stunden',
+  'certificate.print': 'Drucken oder speichern',
+  'certificate.backToCourse': 'Zurück zum Kurs',
+
+  'quiz.title': 'Wie gut kennst du KI?',
+  'quiz.intro': 'Sieben kurze Fragen. Keine Anmeldung, kein Ergebnis wird gespeichert, das dich erkennt.',
+  'quiz.start': 'Quiz starten',
+  'quiz.result.title': 'Dein Ergebnis',
+  'quiz.result.score': '{score} von {total} richtig',
+  'quiz.cta': 'Mit Zugangscode in den Kurs',
+
+  'admin.title': 'Compass Admin',
+  'admin.code.label': 'Zugangscode',
+  'admin.code.submit': 'Anmelden',
+  'admin.code.error': 'Unbekannter Zugangscode.',
+  'admin.stat.issued': 'Plätze vergeben',
+  'admin.stat.activated': 'Aktiviert',
+  'admin.stat.completed': 'Abgeschlossen',
+  'admin.stat.certificates': 'Bescheinigungen',
+  'admin.table.staffRef': 'Referenz',
+  'admin.table.step': 'Aktuelles Modul',
+  'admin.table.units': 'Einheiten',
+  'admin.table.hours': 'Stunden',
+  'admin.table.lastActive': 'Zuletzt aktiv',
+  'admin.table.completed': 'Abgeschlossen am',
+  'admin.export': 'CSV exportieren',
+  'admin.items.title': 'Fragen-Analyse',
+  'admin.items.question': 'Frage',
+  'admin.items.attempts': 'Erstversuche',
+  'admin.items.correct': 'Richtig (1. Versuch)',
+  'admin.items.flag': 'unter 55 %',
+  'admin.logout': 'Abmelden',
+
+  'notFound.title': 'Diese Seite gibt es nicht.',
+  'notFound.back': 'Zur Startseite',
+} as const;
