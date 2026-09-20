@@ -46,6 +46,8 @@ specification; this file records where the build interprets or deviates from it.
   the `compass-preview` Supabase project. `npm run db:reset` runs
   `supabase db reset --linked`. `npm run db:diff` needs Docker for the shadow database;
   without it, write migrations by hand and apply with `npm run db:push`.
+- **`db reset --linked` prompts for confirmation.** Non-interactive runs (CI, agents) need
+  `--yes`; the npm script deliberately keeps the prompt as a safety net for humans.
 - **`db:diff` produces timestamped file names.** Rename to the next sequential number
   (`0004_…`) before committing, per SPEC 12.4.
 - **Keepalive** pings `/rest/v1/institutions` with the anon key. RLS answers 401/403, but
@@ -123,12 +125,12 @@ specification; this file records where the build interprets or deviates from it.
 
 | Phase | Code | Verified | Notes |
 |---|---|---|---|
-| 0 Repository | done | local only | Remote gates (db reset --linked, preview URL, CI) need the accounts |
+| 0 Repository | done | db reset ✓ | `npm run db:reset` rebuilt compass-preview from the repo alone; preview URL + CI gates need GitHub/Vercel |
 | 1 Design system | done | yes | 390px screenshots, focus ring, token and contrast greps |
 | 2 Content | done | yes | Build fails on a deliberate schema violation |
-| 3 Access | done | no | Signer unit-tested; redemption and resume need compass-preview |
-| 4 Path | done | partial | Path helpers unit-tested; gating and beacon need compass-preview |
-| 5 Checks | done | no | Needs compass-preview |
+| 3 Access | done | yes | Redeem, 180-day httpOnly cookie across a fresh context, resume link in a cookie-less context, used/unknown/garbage refused |
+| 4 Path | done | yes | Dots advance, reopen lands on the exact unit, four kinds of deep-link redirect, beacon writes on tab hide, 3× cap (288 s) |
+| 5 Checks | done | yes | Wrong answer explains and never blocks, retry writes attempt_no = 2, no score text |
 | 6 Assessment, certificate | not started | | |
 | 7 Admin | not started | | |
 | 8 Quiz, smoke test | not started | | |
