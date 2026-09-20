@@ -119,6 +119,20 @@ specification; this file records where the build interprets or deviates from it.
   "Weiter" on assessment and certificate units appears only after submission; the
   runner's own button is the single primary action on those screens (SPEC 6.8).
 
+## Build status (2026-09-20)
+
+| Phase | Code | Verified | Notes |
+|---|---|---|---|
+| 0 Repository | done | local only | Remote gates (db reset --linked, preview URL, CI) need the accounts |
+| 1 Design system | done | yes | 390px screenshots, focus ring, token and contrast greps |
+| 2 Content | done | yes | Build fails on a deliberate schema violation |
+| 3 Access | done | no | Signer unit-tested; redemption and resume need compass-preview |
+| 4 Path | done | partial | Path helpers unit-tested; gating and beacon need compass-preview |
+| 5 Checks | done | no | Needs compass-preview |
+| 6 Assessment, certificate | not started | | |
+| 7 Admin | not started | | |
+| 8 Quiz, smoke test | not started | | |
+
 ## Supabase projects
 
 | Project | Region | State |

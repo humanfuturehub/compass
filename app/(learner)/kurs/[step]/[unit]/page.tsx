@@ -3,6 +3,7 @@ import { LearnerPage } from '@/components/layout/LearnerPage';
 import { StepIndicator } from '@/components/StepIndicator';
 import { UnitFooter } from '@/components/learner/UnitFooter';
 import { UnitRenderer } from '@/components/units/UnitRenderer';
+import { recordAttempt, recordScenarioChoice } from '@/lib/actions/checks';
 import { completeUnit } from '@/lib/actions/progress';
 import { getAssessment, getCourse } from '@/lib/content/load';
 import { remainingMinutes, stepPosition, unitDotStates } from '@/lib/content/path';
@@ -46,6 +47,10 @@ export default async function UnitPage({ params }: { params: Params }) {
             locale={learner.locale}
             assessment={getAssessment(learner.locale)}
             defaultDisplayName={learner.displayName ?? learner.staffRef ?? ''}
+            handlers={{
+              onCheckSelect: recordAttempt,
+              onScenarioSelect: recordScenarioChoice.bind(null, unitId),
+            }}
           />
         </div>
         <UnitFooter stepId={stepId} unitId={unitId} locale={learner.locale} action={footerAction} />

@@ -9,8 +9,8 @@ import { TranskriptUnit } from './TranskriptUnit';
 import { WissenscheckUnit } from './WissenscheckUnit';
 
 export type UnitHandlers = {
-  onCheckSelect?: (questionId: string, optionId: string, isCorrect: boolean) => void;
-  onScenarioSelect?: (responseId: string) => void;
+  onCheckSelect?: (questionId: string, optionId: string) => Promise<void>;
+  onScenarioSelect?: (responseId: string) => void | Promise<void>;
   onPrint?: () => void;
   onAssessmentComplete?: (answers: AssessmentAnswer[]) => void | Promise<void>;
   certificateAction?: (formData: FormData) => void | Promise<void>;

@@ -15,7 +15,7 @@ type Props = {
   situation: string;
   responses: ScenarioResponse[];
   locale?: Locale;
-  onSelect?: (responseId: string) => void;
+  onSelect?: (responseId: string) => void | Promise<void>;
 };
 
 const responseButton =
@@ -29,7 +29,7 @@ export function ScenarioCard({ situation, responses, locale = 'de', onSelect }: 
   function choose(id: string) {
     if (chosen !== null) return;
     setChosen(id);
-    onSelect?.(id);
+    void onSelect?.(id);
   }
 
   return (

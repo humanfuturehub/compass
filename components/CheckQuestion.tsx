@@ -19,8 +19,9 @@ export type CheckQuestionData = {
 type Props = {
   question: CheckQuestionData;
   locale?: Locale;
-  /** Called on every selection. Attempt numbering happens on the server. */
-  onSelect?: (optionId: string, isCorrect: boolean) => void;
+  /** Called on every selection; may be a bound server action. Correctness and
+   *  attempt numbering are derived on the server, never trusted from here. */
+  onSelect?: (optionId: string) => void | Promise<void>;
 };
 
 /**
@@ -33,7 +34,7 @@ export function CheckQuestion({ question, locale = 'de', onSelect }: Props) {
 
   function select(optionId: string) {
     setSelected(optionId);
-    onSelect?.(optionId, optionId === question.correctOptionId);
+    void onSelect?.(optionId);
   }
 
   return (

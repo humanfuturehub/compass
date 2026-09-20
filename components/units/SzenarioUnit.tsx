@@ -5,7 +5,7 @@ import type { Locale } from '@/lib/locale';
 type Props = {
   unit: UnitOfType<'szenario'>;
   locale: Locale;
-  onSelect?: (responseId: string) => void;
+  onSelect?: (responseId: string) => void | Promise<void>;
 };
 
 export function SzenarioUnit({ unit, locale, onSelect }: Props) {

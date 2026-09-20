@@ -5,8 +5,8 @@ import type { Locale } from '@/lib/locale';
 type Props = {
   unit: UnitOfType<'wissenscheck'>;
   locale: Locale;
-  /** Wired to check_attempts in Phase 5. */
-  onSelect?: (questionId: string, optionId: string, isCorrect: boolean) => void;
+  /** Server action (questionId, optionId); bound per question below. */
+  onSelect?: (questionId: string, optionId: string) => Promise<void>;
 };
 
 export function WissenscheckUnit({ unit, locale, onSelect }: Props) {
@@ -19,7 +19,7 @@ export function WissenscheckUnit({ unit, locale, onSelect }: Props) {
             key={question.id}
             question={question}
             locale={locale}
-            onSelect={onSelect ? (optionId, isCorrect) => onSelect(question.id, optionId, isCorrect) : undefined}
+            onSelect={onSelect ? onSelect.bind(null, question.id) : undefined}
           />
         ))}
       </div>
