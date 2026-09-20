@@ -6,3 +6,4 @@ export * from './progress';
 export * from './checks';
 export * from './assessments';
 export * from './certificates';
+export * from './admin';

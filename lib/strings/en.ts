@@ -108,6 +108,11 @@ export const en = {
   'admin.items.correct': 'Correct (1st attempt)',
   'admin.items.flag': 'below 55 %',
   'admin.logout': 'Sign out',
+  'admin.learners.title': 'Learners',
+  'admin.step.done': 'Completed',
+  'admin.none': '–',
+  'admin.items.none': 'No first attempts yet.',
+  'admin.learners.none': 'No activated seats yet.',
 
   'notFound.title': 'This page does not exist.',
   'notFound.back': 'To the start page',

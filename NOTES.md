@@ -96,6 +96,16 @@ specification; this file records where the build interprets or deviates from it.
   course length), not measured time. The wordmark is "Human Future Hub" set in League
   Spartan until a logo asset exists.
 
+### Admin
+
+- **Aggregation runs in application code** (`lib/db/admin.ts`): learners, progress, first
+  attempts and certificates are fetched per institution and reduced in TypeScript. Fine
+  for tens of learners per institution; a SQL view can replace it without touching the page.
+- **CSV uses `;` as the delimiter** with a UTF-8 BOM, because German Excel splits on `;`
+  by default. English Excel users can use Data → From Text if needed.
+- **Item analysis excludes scenario choices** (`is_correct IS NULL`) and only counts
+  `attempt_no = 1`.
+
 ### Testing
 
 - **The Playwright smoke test provisions its own seat** through the service-role key in
@@ -144,7 +154,7 @@ join assessments post on post.learner_id = l.id and post.phase = 'post';
 | 4 Path | done | yes | Dots advance, reopen lands on the exact unit, four kinds of deep-link redirect, beacon writes on tab hide, 3× cap (288 s) |
 | 5 Checks | done | yes | Wrong answer explains and never blocks, retry writes attempt_no = 2, no score text |
 | 6 Assessment, certificate | done | yes | Fresh learner walked all six steps; pre 4 → post 12 stored; certificate prints to one A4 page; certificates are private to their learner |
-| 7 Admin | not started | | |
+| 7 Admin | done | yes | Seeded learner row (m1, 7/20, 0,22 h), CSV with BOM and `;`, `m1-check-q1` flagged at 0 % |
 | 8 Quiz, smoke test | not started | | |
 
 ## Supabase projects

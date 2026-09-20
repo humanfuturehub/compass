@@ -107,6 +107,11 @@ export const de = {
   'admin.items.correct': 'Richtig (1. Versuch)',
   'admin.items.flag': 'unter 55 %',
   'admin.logout': 'Abmelden',
+  'admin.learners.title': 'Lernende',
+  'admin.step.done': 'Abgeschlossen',
+  'admin.none': '–',
+  'admin.items.none': 'Noch keine Erstversuche.',
+  'admin.learners.none': 'Noch keine aktivierten Plätze.',
 
   'notFound.title': 'Diese Seite gibt es nicht.',
   'notFound.back': 'Zur Startseite',
