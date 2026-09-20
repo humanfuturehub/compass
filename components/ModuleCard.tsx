@@ -8,7 +8,8 @@ export type ModuleState = 'done' | 'current' | 'todo' | 'locked';
 
 type Props = {
   title: string;
-  minutes: number;
+  /** Omitted on extras: no duration emphasis (SPEC 4). */
+  minutes?: number;
   href: string;
   state: ModuleState;
   /** Title of the step that must be completed first; shown when locked. */
@@ -87,7 +88,9 @@ export function ModuleCard({
           {t('module.extra', locale)} · {t('module.extra.optional', locale)}
         </p>
         <p className="mt-4 text-body font-semibold text-ink">{title}</p>
-        <p className="mt-4 text-micro text-ink-muted">{t('module.duration', locale, { n: minutes })}</p>
+        {minutes !== undefined ? (
+          <p className="mt-4 text-micro text-ink-muted">{t('module.duration', locale, { n: minutes })}</p>
+        ) : null}
       </Shell>
     );
   }
@@ -98,7 +101,9 @@ export function ModuleCard({
         <h2 className="text-ink">{title}</h2>
         <StateBadge state={state} locale={locale} />
       </div>
-      <p className="mt-4 text-small text-ink-muted">{t('module.duration', locale, { n: minutes })}</p>
+      {minutes !== undefined ? (
+        <p className="mt-4 text-small text-ink-muted">{t('module.duration', locale, { n: minutes })}</p>
+      ) : null}
       {locked && previousTitle ? (
         <p className="mt-8 text-small text-ink-muted">
           {t('module.locked', locale, { title: previousTitle })}

@@ -61,8 +61,8 @@ export default function ComponentsPage() {
               state="locked"
               previousTitle="Wo KI Fehler macht"
             />
-            <ModuleCard title="Tokens" minutes={3} href="#" state="todo" variant="extra" />
-            <ModuleCard title="Kontextfenster" minutes={3} href="#" state="locked" variant="extra" />
+            <ModuleCard title="Tokens" href="#" state="todo" variant="extra" />
+            <ModuleCard title="Kontextfenster" href="#" state="locked" variant="extra" />
           </Section>
 
           <Section title="TranscriptCard">

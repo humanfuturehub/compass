@@ -8,7 +8,7 @@ export const en = {
 
   'step.indicator': 'Module {n} of {total}',
   'units.position': 'Unit {n} of {total}',
-  'units.allDone': 'All {total} units completed',
+  'units.progress': '{done} of {total} units completed',
 
   'header.back': 'Back to overview',
   'header.remaining': 'about {n} min left',

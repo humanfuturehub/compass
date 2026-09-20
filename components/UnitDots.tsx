@@ -18,9 +18,10 @@ type Props = {
 export function UnitDots({ states, locale = 'de' }: Props) {
   const total = states.length;
   const current = states.indexOf('current');
+  const done = states.filter((state) => state === 'done').length;
   const label =
     current === -1
-      ? t('units.allDone', locale, { total })
+      ? t('units.progress', locale, { done, total })
       : t('units.position', locale, { n: current + 1, total });
 
   return (

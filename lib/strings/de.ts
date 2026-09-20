@@ -7,7 +7,7 @@ export const de = {
 
   'step.indicator': 'Modul {n} von {total}',
   'units.position': 'Einheit {n} von {total}',
-  'units.allDone': 'Alle {total} Einheiten abgeschlossen',
+  'units.progress': '{done} von {total} Einheiten abgeschlossen',
 
   'header.back': 'Zurück zur Übersicht',
   'header.remaining': 'noch ca. {n} Min.',
