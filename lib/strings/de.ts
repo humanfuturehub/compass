@@ -23,6 +23,7 @@ export const de = {
   'transcript.label': 'Aufgezeichnetes Beispiel',
   'transcript.user': 'Frage',
   'transcript.assistant': 'Antwort der KI',
+  'transcript.points': 'Was hier passiert ist',
 
   'check.group': 'Antwortmöglichkeiten',
   'check.correct': 'Richtig',

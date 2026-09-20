@@ -105,7 +105,19 @@ specification; this file records where the build interprets or deviates from it.
 
 ## Content TODOs
 
-_(filled in during Phase 2)_
+- **Editorial review** of all German content by Human Future Hub. Everything in
+  `content/de` was drafted to the schema (A2–B1, Du-form) and is complete enough to walk
+  the path end to end; `m3-check` and `m4-merkblatt` in particular were written as
+  working schema examples (SPEC 5.1) and should be reviewed before launch.
+- **Tracks.** Only `bewerbung` exists. The `kinder` and `unterricht` tracks need their
+  own `m4` scenario and Merkblatt at minimum; `m1`–`m3` can be shared.
+- **English.** `content/en` has interface strings, the `start` step and the assessment.
+  `m1`–`abschluss` are re-exported from German in `content/en/course.ts`.
+- **Public quiz** ships in German only (`content/de/quiz.ts`).
+- **Assessment items are skippable.** An unanswered item is stored with
+  `optionId: null` and counts as incorrect, so the instrument never blocks. The footer
+  "Weiter" on assessment and certificate units appears only after submission; the
+  runner's own button is the single primary action on those screens (SPEC 6.8).
 
 ## Supabase projects
 

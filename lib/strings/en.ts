@@ -24,6 +24,7 @@ export const en = {
   'transcript.label': 'Recorded example',
   'transcript.user': 'Question',
   'transcript.assistant': 'AI answer',
+  'transcript.points': 'What happened here',
 
   'check.group': 'Answer options',
   'check.correct': 'Correct',
