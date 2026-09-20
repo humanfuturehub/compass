@@ -116,8 +116,8 @@ specification; this file records where the build interprets or deviates from it.
   Playwright's route interception breaks Next's streamed hydration, so the quiz test
   instead neuters `document.cookie`, asserts the server never sends `Set-Cookie` during the
   quiz, and checks the context ends with zero cookies while the run is recorded.
-- **The smoke test takes ~3 minutes against `next dev`** because every route compiles on
-  first hit. Against a built preview deployment it is much faster.
+- **The smoke test is slow on a cold `next dev`** (every route compiles on first hit,
+  ~3 min) and ~11 s once warm or against a built deployment.
 - **`scripts/check-tokens.mjs`** greps `app/`, `components/`, `lib/` for hex or px literals
   outside `app/globals.css` and `tailwind.config.ts`. Local tool, not a CI gate (SPEC 12.6).
 
