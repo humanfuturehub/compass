@@ -16,10 +16,14 @@ let code = '';
 
 const weiter = (page: Page) => page.locator('footer').getByRole('button', { name: 'Weiter' });
 
+// After a server-action redirect the URL changes a moment before the new page
+// commits, so wait for the heading to change as well, not just the URL.
 async function pressWeiter(page: Page) {
   const before = page.url();
+  const heading = await page.locator('main h1').first().innerText();
   await weiter(page).click();
   await page.waitForURL((next) => next.toString() !== before);
+  await expect(page.locator('main h1').first()).not.toHaveText(heading);
 }
 
 test.beforeAll(async () => {
