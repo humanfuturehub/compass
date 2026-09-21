@@ -179,7 +179,10 @@ join assessments post on post.learner_id = l.id and post.phase = 'post';
       rulesets are unavailable on private Free repos). Until then, merge only via PR by convention.
 - [~] CI on PR #1: `build` green on GitHub's runner; `e2e` polls the Deployments API
       correctly and times out after 12 min until the Vercel GitHub integration deploys previews
-- [ ] Vercel team project, `fra1`, Deployment Protection on, env vars per environment
+- [~] Vercel project `compass` under the personal scope `quackies-projects`, connected to the
+      GitHub repo, `fra1` via vercel.json, Preview env vars set. **Open:** transfer to a
+      Human Future Hub team (SPEC 12.1), Deployment Protection + bypass secret, Production
+      env vars once compass-prod exists
 - [ ] `compass-prod` created in EU Central and its migrations pushed (`supabase db push` against prod, once, deliberately)
 - [ ] Custom domain with HTTPS
 - [ ] Editorial review of `content/de` (see Content TODOs)
