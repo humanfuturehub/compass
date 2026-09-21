@@ -184,8 +184,10 @@ join assessments post on post.learner_id = l.id and post.phase = 'post';
 - [x] GitHub `humanfuturehub/compass` exists, private, `main` pushed
 - [ ] `main` protection: needs GitHub Team (the org is on Free; branch protection and
       rulesets are unavailable on private Free repos). Until then, merge only via PR by convention.
-- [x] CI green on PR #1: `build` on GitHub's runner, `e2e` against the protected Vercel
-      preview URL with the automation bypass secret
+- [x] CI green on PR #1 (merged): `build` on GitHub's runner, `e2e` against the protected
+      Vercel preview URL with the automation bypass secret. `main` deploys to production
+      behind Vercel Authentication until a custom domain exists.
+- [x] Keepalive workflow skips cleanly until the compass-prod secrets exist
 - [~] Vercel project `compass` under the personal scope `quackies-projects`, connected to the
       GitHub repo, `fra1` via vercel.json, Preview env vars set, Standard Deployment
       Protection on, automation bypass secret stored in GitHub Actions. **Open:** transfer to

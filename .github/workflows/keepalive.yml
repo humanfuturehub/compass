@@ -18,6 +18,10 @@ jobs:
           SUPABASE_URL: ${{ secrets.KEEPALIVE_SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.KEEPALIVE_SUPABASE_ANON_KEY }}
         run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "KEEPALIVE_SUPABASE_URL / KEEPALIVE_SUPABASE_ANON_KEY not set (compass-prod not created yet); skipping"
+            exit 0
+          fi
           # RLS denies the anon key, so the response is 401/403 — the query still ran.
           # Only a connection failure (curl exit code) fails the job.
           status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
