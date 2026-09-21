@@ -42,6 +42,13 @@ specification; this file records where the build interprets or deviates from it.
 
 ### Environments
 
+- **Vercel's first Git deployment of the project was labelled `production`** although it
+  came from a feature branch and the production branch is `main`. It ran with the empty
+  Production environment and failed the smoke test; every later push deployed as a
+  preview. Harmless, but it explains the one stray production deployment in the list.
+- **Actions secrets are set by CLI** (`gh secret set`), the Vercel bypass secret was
+  generated through the project API. Rotate both from the dashboards if a machine is lost.
+
 - **No Docker on the development machine.** Local development and Vercel Preview share
   the `compass-preview` Supabase project. `npm run db:reset` runs
   `supabase db reset --linked`. `npm run db:diff` needs Docker for the shadow database;
@@ -174,8 +181,15 @@ join assessments post on post.learner_id = l.id and post.phase = 'post';
 
 - [x] `/dev/*` returns 404 when `VERCEL_ENV=production`
 - [x] `noindex` on every page (remove at launch only)
-- [ ] GitHub `humanfuturehub/compass` with `main` protected; CI green on a PR
-- [ ] Vercel team project, `fra1`, Deployment Protection on, env vars per environment
+- [x] GitHub `humanfuturehub/compass` exists, private, `main` pushed
+- [ ] `main` protection: needs GitHub Team (the org is on Free; branch protection and
+      rulesets are unavailable on private Free repos). Until then, merge only via PR by convention.
+- [x] CI green on PR #1: `build` on GitHub's runner, `e2e` against the protected Vercel
+      preview URL with the automation bypass secret
+- [~] Vercel project `compass` under the personal scope `quackies-projects`, connected to the
+      GitHub repo, `fra1` via vercel.json, Preview env vars set, Standard Deployment
+      Protection on, automation bypass secret stored in GitHub Actions. **Open:** transfer to
+      a Human Future Hub team (SPEC 12.1); Production env vars once compass-prod exists
 - [ ] `compass-prod` created in EU Central and its migrations pushed (`supabase db push` against prod, once, deliberately)
 - [ ] Custom domain with HTTPS
 - [ ] Editorial review of `content/de` (see Content TODOs)

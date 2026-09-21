@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/Button';
 import type { Locale } from '@/lib/locale';
 import { t } from '@/lib/strings/t';
@@ -14,6 +15,15 @@ type Props = {
   /** For extras: a plain link back instead of a completion action. */
   nextHref?: string;
 };
+
+function SubmitButton({ label }: { label: string }) {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={pending}>
+      {label}
+    </Button>
+  );
+}
 
 function beacon(stepId: string, unitId: string, seconds: number) {
   const body = new Blob([JSON.stringify({ stepId, unitId, seconds })], { type: 'application/json' });
@@ -78,7 +88,7 @@ export function UnitFooter({ stepId, unitId, locale, action, nextHref }: Props) 
       ) : action ? (
         <form action={action} onSubmit={onSubmit}>
           <input ref={secondsInput} type="hidden" name="seconds" defaultValue="0" />
-          <Button type="submit">{t('footer.next', locale)}</Button>
+          <SubmitButton label={t('footer.next', locale)} />
         </form>
       ) : null}
       <p className="mt-16 text-small text-ink-muted">{t('footer.stop', locale)}</p>
