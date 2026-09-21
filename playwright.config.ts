@@ -15,6 +15,8 @@ const bypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
 export default defineConfig({
   testDir: './tests',
   timeout: 180_000,
+  // Remote previews answer from cold functions; 5 s assertions are too tight there.
+  expect: { timeout: process.env.E2E_BASE_URL ? 20_000 : 5_000 },
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
